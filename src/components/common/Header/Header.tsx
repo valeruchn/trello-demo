@@ -1,5 +1,4 @@
-import React, { FC } from 'react'
-import { useSelector } from 'react-redux'
+import React, { FC, memo } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
@@ -7,7 +6,8 @@ interface IProps {
   boardName: string
 }
 
-const Header: FC<IProps> = ({ boardName }) => {
+const HeaderComponent: FC<IProps> = ({ boardName }) => {
+  console.log('header test')
   return (
     <div>
       <Navbar bg="primary" variant="dark">
@@ -22,5 +22,7 @@ const Header: FC<IProps> = ({ boardName }) => {
     </div>
   )
 }
+
+const Header = memo(HeaderComponent)
 
 export { Header }

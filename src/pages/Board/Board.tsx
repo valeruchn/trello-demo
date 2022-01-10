@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Formik } from 'formik'
 import { v4 as uuidv4 } from 'uuid'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap'
-import { actionsCreators, getBoardTitle, getCategory } from '../../redux'
+import { actionsCreators, getBoardTitle, getCategory, getColumns } from '../../redux'
 import { Column } from './components'
 import { Header } from '../../components/common'
 import { IState, TCategory } from '../../../types'
@@ -11,19 +11,9 @@ import { IState, TCategory } from '../../../types'
 const Board = () => {
   const { addTodo, updateTodo, deleteTodo } = actionsCreators
   // Получаем категории
-  const backlogList = useSelector((state: IState) => getCategory(state, 'backlog'))
-  const progressList = useSelector((state: IState) => getCategory(state, 'progress'))
-  const testList = useSelector((state: IState) => getCategory(state, 'test'))
-  const doneList = useSelector((state: IState) => getCategory(state, 'done'))
+  const columns = useSelector(getColumns)
   // Получаем название доски
   const boardName = useSelector(getBoardTitle)
-  // Собираем массив для рендера колонок
-  const columns = [
-    { category: 'backlog', todoList: backlogList, nextStage: 'progress' },
-    { category: 'progress', todoList: progressList, nextStage: 'test' },
-    { category: 'test', todoList: testList, nextStage: 'done' },
-    { category: 'done', todoList: doneList, nextStage: null }
-  ] as const
 
   const dispatch = useDispatch()
 
@@ -85,7 +75,7 @@ const Board = () => {
 
               <Row>
                 {columns.map((column, index) => (
-                  <Col>
+                  <Col key={index.toString()}>
                     <Column
                       todoList={column.todoList}
                       column={column.category}

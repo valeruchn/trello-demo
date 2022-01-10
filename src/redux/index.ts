@@ -1,3 +1,3 @@
 export { actionsCreators } from './action-creators'
-export { getCategory, getBoardTitle } from './selectors'
+export { getCategory, getBoardTitle, getColumns } from './selectors'
 export { store } from './store'

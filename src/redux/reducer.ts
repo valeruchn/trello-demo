@@ -3,18 +3,10 @@ import { TUserProfileActionTypes } from './action-creators'
 import { ADD_TO_DO, DELETE_TO_DO, SET_BOARD_TITLE, UPDATE_TO_TO } from './actions'
 
 const initialState: IState = {
+  categories: ['backlog', 'progress', 'test', 'done'],
   boardTitle: '',
   board: []
 }
-
-// const updateToDo = (state: IState, payload: ITodoItem) => {
-//   state.board.forEach((todo, index, board) => {
-//     if (todo._id === payload._id) {
-//       board[index] = payload
-//     }
-//   })
-//   return state.board
-// }
 
 export const reducer = (state = initialState, action: TUserProfileActionTypes) => {
   switch (action.type) {

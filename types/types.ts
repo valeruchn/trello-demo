@@ -9,6 +9,7 @@ export interface ITodoItem {
 }
 // state
 export interface IState {
+  categories: Array<TCategory>
   boardTitle: string
   board: Array<ITodoItem>
 }
