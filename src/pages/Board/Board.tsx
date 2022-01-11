@@ -1,14 +1,32 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik } from 'formik'
 import { v4 as uuidv4 } from 'uuid'
 import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap'
-import { actionsCreators, getBoardTitle, getCategory, getColumns } from '../../redux'
+import { actionsCreators, getBoardTitle, getColumns } from '../../redux'
 import { Column } from './components'
 import { Header } from '../../components/common'
-import { IState, TCategory } from '../../../types'
+import { TCategory } from '../../../types'
 
 const Board = () => {
+  // Решение задачи с собеседования :)
+
+  // const test = 'aaassdzwwwwx'
+
+  // const getSimbolsCount = (text: string) => {
+  //   const arraySimbols = text.split('')
+  //   let result = ''
+  //   for (let i = 0; i < arraySimbols.length; i++) {
+  //     if (arraySimbols[i] !== result.slice(-1)) {
+  //       result += `1${arraySimbols[i]}`
+  //     } else {
+  //       const currentCount = +result.slice(-2, -1)
+  //       result = result.slice(0, -2) + (currentCount + 1) + arraySimbols[i]
+  //     }
+  //   }
+  //   return result
+  // }
+  // console.log(getSimbolsCount(test))
+
   const { addTodo, updateTodo, deleteTodo } = actionsCreators
   // Получаем категории
   const columns = useSelector(getColumns)
